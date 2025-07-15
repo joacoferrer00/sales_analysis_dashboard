@@ -1,0 +1,16 @@
+Target_vs_Actual_Diff =
+VAR ActualSales =
+    CALCULATE(
+        SUM('SalesFact'[Quantity]),
+        KEEPFILTERS(
+            'Calendar'[SeasonLabel] = "Season 25-26"
+        )
+    )
+
+VAR SalesTarget =
+    CALCULATE(
+        SUM('Targets'[TargetAmount])
+    )
+
+RETURN
+ActualSales - SalesTarget

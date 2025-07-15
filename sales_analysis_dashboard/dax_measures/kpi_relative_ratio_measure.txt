@@ -1,0 +1,23 @@
+KPI_GroupA_vs_GroupB =
+VAR SalesGroupA =
+    CALCULATE(
+        SUM('SalesFact'[Quantity]),
+        'ProductClassification'[CategoryGroup] IN {
+            "Group A1", "Group A2", "Group A3", "Group A4", "Group A5"
+        },
+        'Calendar'[SeasonLabel] = "Season 25-26",
+        REMOVEFILTERS('ProductClassification'[CategoryGroup])
+    )
+
+VAR SalesGroupB =
+    CALCULATE(
+        SUM('SalesFact'[Quantity]),
+        'ProductClassification'[CategoryGroup] IN {
+            "Group B1", "Group B2", "Group B3", "Group B4"
+        },
+        'Calendar'[SeasonLabel] = "Season 25-26",
+        REMOVEFILTERS('ProductClassification'[CategoryGroup])
+    )
+
+RETURN
+DIVIDE(SalesGroupA, SalesGroupB)
