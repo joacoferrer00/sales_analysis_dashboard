@@ -1,0 +1,23 @@
+Dynamic_Season_Progress =
+VAR TodayDate = TODAY()
+VAR CurrentDay = DAY(TodayDate)
+VAR CurrentMonth = MONTH(TodayDate)
+
+VAR DateRange =
+    FILTER(
+        ALL('Calendar'),
+        'Calendar'[SeasonLabel] = "Season 24-25"
+            && DAY('Calendar'[Date]) <= CurrentDay
+            && MONTH('Calendar'[Date]) <= CurrentMonth
+    )
+
+RETURN
+CALCULATE(
+    SUM('SalesFact'[Quantity]),
+    DateRange,
+    KEEPFILTERS(
+        'ProductClassification'[CategoryGroup] IN {
+            "Group A", "Group B", "Group C", "Group D"
+        }
+    )
+)
