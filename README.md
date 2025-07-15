@@ -50,7 +50,7 @@ You can explore the data model and KPI logic in the [`metadata/`](./metadata/) f
 
 ## 🧮 Sample DAX Measures
 
-You’ll find real DAX examples used to build this dashboard in [`dax-measures/`](./dax-measures/), including:
+You’ll find real DAX examples used to build this dashboard in [`dax-measures/`](./dax_measures/), including:
 
 - Relative ratio between product groups
 - Difference vs. target (absolute and %)
